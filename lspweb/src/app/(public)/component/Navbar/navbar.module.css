@@ -1,0 +1,10 @@
+.menuList {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-item {
+  padding: 20px;
+  color: #040924;
+  font-weight: 500;
+}
