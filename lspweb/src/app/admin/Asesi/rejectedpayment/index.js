@@ -102,36 +102,34 @@ export default function RejectedPayment() {
   const theme = useTheme(getTheme());
   console.log(dataSkema, "dataskema");
   return (
-    <>
-      <Table data={dataSkema} theme={theme}>
-        {(tableList) => (
-          <>
-            <Header>
-              <HeaderRow>
-                <HeaderCell>Nama Asesi</HeaderCell>
-                <HeaderCell>KTP</HeaderCell>
-                <HeaderCell>Ijazah</HeaderCell>
-                <HeaderCell>Pas Foto</HeaderCell>
-                <HeaderCell>Bukti Bayar</HeaderCell>
-                <HeaderCell>Status Pembayaran</HeaderCell>
-              </HeaderRow>
-            </Header>
+    <Table data={dataSkema} theme={theme}>
+      {(tableList) => (
+        <>
+          <Header>
+            <HeaderRow>
+              <HeaderCell>Nama Asesi</HeaderCell>
+              <HeaderCell>KTP</HeaderCell>
+              <HeaderCell>Ijazah</HeaderCell>
+              <HeaderCell>Pas Foto</HeaderCell>
+              <HeaderCell>Bukti Bayar</HeaderCell>
+              <HeaderCell>Status Pembayaran</HeaderCell>
+            </HeaderRow>
+          </Header>
 
-            <Body>
-              {tableList.map((item, i) => (
-                <Row key={i}>
-                  <Cell>{item.nama_asesi}</Cell>
-                  <Cell>{item.ktp}</Cell>
-                  <Cell>{item.ijazah}</Cell>
-                  <Cell>{item.pasfoto}</Cell>
-                  <Cell>{item.buktibayar}</Cell>
-                  <Cell>{item.status_pembayaran}</Cell>
-                </Row>
-              ))}
-            </Body>
-          </>
-        )}
-      </Table>
-    </>
+          <Body>
+            {tableList.map((item, i) => (
+              <Row key={i}>
+                <Cell>{item.nama_asesi}</Cell>
+                <Cell>{item.ktp}</Cell>
+                <Cell>{item.ijazah}</Cell>
+                <Cell>{item.pasfoto}</Cell>
+                <Cell>{item.buktibayar}</Cell>
+                <Cell>{item.status_pembayaran}</Cell>
+              </Row>
+            ))}
+          </Body>
+        </>
+      )}
+    </Table>
   );
 }

@@ -12,7 +12,7 @@ import RejectedPayment from "./rejectedpayment";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
-
+  console.log(children, "children");
   return (
     <div
       role="tabpanel"
@@ -45,7 +45,7 @@ function a11yProps(index) {
 
 export default function Asesi() {
   const [value, setValue] = React.useState(0);
-
+  console.log(value, "value");
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -63,15 +63,15 @@ export default function Asesi() {
           <Tab label="Rejected" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
+      <div hidden={value !== 0}>
         <PendingPayment />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
+      </div>
+      <div hidden={value !== 1}>
         <ApprovedPayment />
-      </CustomTabPanel>
-      <CustomTabPanel value={value} index={2}>
+      </div>
+      <div hidden={value !== 2}>
         <RejectedPayment />
-      </CustomTabPanel>
+      </div>
     </Box>
   );
 }
