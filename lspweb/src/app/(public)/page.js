@@ -1,24 +1,41 @@
 "use client";
+
 import Image from "next/image";
 import { Button, Typography, Box } from "@mui/material";
 import styles from "./page.module.css";
 import Footer from "./component/footer";
+import CountUp from "react-countup";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchSkema } from "../services/skema";
+import { fetchAsesorServices } from "../services/asesor";
 
 export default function Home() {
+  let dispatch = useDispatch();
+  let skema = useSelector((state) => state.skema.skema);
+  let asesor = useSelector((state) => state.asesor.asesor);
+
+  useEffect(() => {
+    dispatch(fetchSkema());
+    // dispatch(fetchAsesorServices());
+  }, []);
+
+  console.log(skema, "skema");
   return (
     <>
       <div className={styles["box-banner"]}>
         <div className="container">
           <div className="row">
-            <div className="col-12 col-lg-6">
+            <div className="col-12 col-xl-6">
               <div className={styles["banner-img"]}>
                 <img
                   className={`${styles.gambarbanner}`}
-                  src="https://www.crayon.co/hs-fs/hubfs/CRAY_Homepage_13.png?width=366&height=550&name=CRAY_Homepage_13.png"
+                  src="/48362100261.png"
+                  style={{ borderRadius: "10px" }}
                 />
               </div>
             </div>
-            <div className="col-12 col-lg-6">
+            <div className="col-12 col-xl-6">
               <div className={styles["desc-banner"]}>
                 <Typography
                   sx={{
@@ -28,29 +45,29 @@ export default function Home() {
                     color: "#040924",
                   }}
                 >
-                  Win More Business.
-                  <br /> Keep More Customers.
+                  Buktikan Kompetensi Melalui Sertifikasi.
                 </Typography>
                 <Typography sx={{ fontSize: "24px", color: "#040924" }}>
-                  Crayon is the #1 competitive intelligence platform that helps
-                  you track your competitors and enable your revenue team in
-                  real-time.
+                  Sertifikasi profesi bertujuan untuk memastikan kompetensi
+                  Mahasiswa yang telah didapatkan melalui proses kegiatan
+                  pembelajaran di Institut STIAMI.
                 </Typography>
                 <Button
                   sx={{
                     background: "#2dc3d0",
                     borderRadius: "8px",
-                    padding: "17px 30px",
+                    padding: "12px 20px",
                     color: "#040924",
                     fontWeight: 700,
                     marginTop: "17px",
                     minWidth: "250px",
-                    // textTransform: "lowercase !important",
+                    // textTransform: "none",
+                    fontSize: "20px",
                   }}
                   variant="contained"
                   color="success"
                 >
-                  See in action
+                  Daftar
                 </Button>
               </div>
             </div>
@@ -60,7 +77,7 @@ export default function Home() {
       <div className={styles["inform-section"]}>
         <div className="container">
           <div className="row">
-            <div className="col-12 col-lg-6">
+            <div className="col-12 col-xl-6">
               <div className={styles["informsection-img"]}>
                 <img
                   className={`${styles.gambarinformsection}`}
@@ -68,38 +85,28 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="col-12 col-lg-6">
+            <div className="col-12 col-xl-6">
               <div className={styles["desc-informsection"]}>
                 <Typography
                   sx={{
-                    fontSize: "48px",
+                    fontSize: "46px",
                     lineHeight: "1.15",
                     fontWeight: 700,
                   }}
                 >
-                  We know what it takes to beat the competition
+                  AYO IKUT SERTIFIKASI!
                 </Typography>
-                <Typography sx={{ fontSize: "24px", paddingTop: "15px" }}>
-                  See for yourself why Crayon is a 3x PMA Pulse leader and 11x
-                  G2 grid leader. Take a demo to see how our customers use
-                  Crayon to beat their competitors.
+                <Typography sx={{ fontSize: "22px", paddingTop: "15px" }}>
+                  Dengan memiliki sertifikasi, individu dapat menunjukkan bahwa
+                  mereka memiliki keahlian dan pengetahuan yang diperlukan untuk
+                  bekerja dalam bidang tertentu. Sertifikasi juga dapat membantu
+                  membedakan diri dari kandidat lain dalam persaingan untuk
+                  posisi pekerjaan yang diinginkan. Banyak perusahaan menawarkan
+                  insentif finansial kepada karyawan yang memperoleh sertifikasi
+                  tertentu. Ini karena perusahaan percaya bahwa karyawan yang
+                  memiliki sertifikasi dapat memberikan nilai tambah yang lebih
+                  besar pada bisnis mereka.
                 </Typography>
-                <Button
-                  sx={{
-                    background: "#2dc3d0",
-                    borderRadius: "8px",
-                    padding: "17px 30px",
-                    color: "#040924",
-                    fontWeight: 700,
-                    marginTop: "20px",
-                    minWidth: "250px",
-                    // textTransform: "lowercase !important",
-                  }}
-                  variant="contained"
-                  color="success"
-                >
-                  Schedule a demo
-                </Button>
               </div>
             </div>
           </div>
@@ -116,14 +123,14 @@ export default function Home() {
             paddingBottom: "35px",
           }}
         >
-          Supercharge your competitive intelligence discipline
+          MANFAAT SERTIFIKASI
         </Typography>
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 mb-4">
+            <div className="col-12 col-xl-4 mb-4">
               <div className={styles["benefit-card"]}>
                 <div className={styles["benefit-img"]}>
-                  <img src="https://www.crayon.co/hs-fs/hubfs/capture-icon.png?width=130&height=130&name=capture-icon.png" />
+                  <img src="/Karir.png" />
                 </div>
                 <Typography
                   sx={{
@@ -134,7 +141,7 @@ export default function Home() {
                     paddingTop: "10px",
                   }}
                 >
-                  UNPARALLELED INTELLIGENCE
+                  PENINGKATAN KARIR
                 </Typography>
                 <Typography
                   sx={{
@@ -144,11 +151,17 @@ export default function Home() {
                     paddingTop: "15px",
                   }}
                 >
-                  Outsmart the competition and drive revenue growth with a
-                  platform that automatically gathers, organizes, and amplifies
-                  crucial data from millions of sources.
+                  Dengan memiliki sertifikasi, individu dapat menunjukkan bahwa
+                  mereka memiliki keahlian dan pengetahuan yang diperlukan untuk
+                  bekerja dalam bidang tertentu. Sertifikasi juga dapat membantu
+                  membedakan diri dari kandidat lain dalam persaingan untuk
+                  posisi pekerjaan yang diinginkan. Banyak perusahaan menawarkan
+                  insentif finansial kepada karyawan yang memperoleh sertifikasi
+                  tertentu. Ini karena perusahaan percaya bahwa karyawan yang
+                  memiliki sertifikasi dapat memberikan nilai tambah yang lebih
+                  besar pada bisnis mereka.
                 </Typography>
-                <Typography
+                {/* <Typography
                   sx={{
                     textAlign: "center",
                     fontSize: "20px",
@@ -161,13 +174,13 @@ export default function Home() {
                   }}
                 >
                   Learn More
-                </Typography>
+                </Typography> */}
               </div>
             </div>
-            <div className="col-lg-4 mb-4">
+            <div className="col-12 col-xl-4 mb-4">
               <div className={styles["benefit-card"]}>
                 <div className={styles["benefit-img"]}>
-                  <img src="https://www.crayon.co/hs-fs/hubfs/capture-icon.png?width=130&height=130&name=capture-icon.png" />
+                  <img src="/Pengetahuan.png" />
                 </div>
                 <Typography
                   sx={{
@@ -178,7 +191,7 @@ export default function Home() {
                     paddingTop: "10px",
                   }}
                 >
-                  UNPARALLELED INTELLIGENCE
+                  MENINGKATKAN KEMAMPUAN DAN KEAHLIAN
                 </Typography>
                 <Typography
                   sx={{
@@ -188,11 +201,18 @@ export default function Home() {
                     paddingTop: "15px",
                   }}
                 >
-                  Outsmart the competition and drive revenue growth with a
-                  platform that automatically gathers, organizes, and amplifies
-                  crucial data from millions of sources.
+                  Untuk lulus sertifikasi, individu harus mempelajari materi dan
+                  konsep yang berkaitan dengan bidang tersebut. Proses belajar
+                  ini dapat membantu meningkatkan keahlian dan pengetahuan
+                  seseorang, sehingga mereka menjadi lebih efektif dalam
+                  pekerjaan mereka. Organisasi sertifikasi sering menyediakan
+                  pelatihan dan pengembangan berkelanjutan untuk memastikan
+                  bahwa individu tetap terkini dalam bidang mereka. Pelatihan
+                  ini dapat membantu individu meningkatkan keahlian dan
+                  pengetahuan mereka, sehingga mereka dapat lebih sukses dalam
+                  pekerjaan mereka.
                 </Typography>
-                <Typography
+                {/* <Typography
                   sx={{
                     textAlign: "center",
                     fontSize: "20px",
@@ -205,13 +225,13 @@ export default function Home() {
                   }}
                 >
                   Learn More
-                </Typography>
+                </Typography> */}
               </div>
             </div>
-            <div className="col-lg-4 mb-4">
+            <div className="col-12 col-xl-4 mb-4">
               <div className={styles["benefit-card"]}>
                 <div className={styles["benefit-img"]}>
-                  <img src="https://www.crayon.co/hs-fs/hubfs/capture-icon.png?width=130&height=130&name=capture-icon.png" />
+                  <img src="Profesinalisme.png" />
                 </div>
                 <Typography
                   sx={{
@@ -222,7 +242,7 @@ export default function Home() {
                     paddingTop: "10px",
                   }}
                 >
-                  UNPARALLELED INTELLIGENCE
+                  PROFESIONALITAS
                 </Typography>
                 <Typography
                   sx={{
@@ -232,11 +252,14 @@ export default function Home() {
                     paddingTop: "15px",
                   }}
                 >
-                  Outsmart the competition and drive revenue growth with a
-                  platform that automatically gathers, organizes, and amplifies
-                  crucial data from millions of sources.
+                  Sertifikasi menunjukkan bahwa individu telah menguji kemampuan
+                  dan pengetahuan mereka secara independen oleh organisasi yang
+                  diakui oleh industri. Ini dapat membantu membuktikan bahwa
+                  seseorang memiliki keterampilan, etika, pengetahuan, bahkan
+                  kepercayaan diri yang diperlukan untuk melakukan pekerjaan
+                  dengan baik dan dapat dipercaya oleh klien dan rekan kerja.
                 </Typography>
-                <Typography
+                {/* <Typography
                   sx={{
                     textAlign: "center",
                     fontSize: "20px",
@@ -249,13 +272,14 @@ export default function Home() {
                   }}
                 >
                   Learn More
-                </Typography>
+                </Typography> */}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className={styles["insight-box"]}>
+
+      {/* <div className={styles["insight-box"]}>
         <div
           style={{
             display: "flex",
@@ -429,21 +453,21 @@ export default function Home() {
             </div>
           </div>
         </Box>
-      </div>
+      </div> */}
       <div className={styles["best-product"]}>
         <Typography
           sx={{
             color: "#040924",
-            fontWeight: 500,
+            fontWeight: 700,
             fontSize: "36px",
             textAlign: "center",
             paddingBottom: "50px",
           }}
         >
-          Our Best Resources
+          INFO GRAFIS
         </Typography>
         <div className="container">
-          <div className="row">
+          {/* <div className="row">
             <div className="col col-lg-6">
               <div className={styles["img-bestproduct"]}>
                 <img src="https://www.crayon.co/hs-fs/hubfs/guide-to-ci-cover-page.png?width=284&height=357&name=guide-to-ci-cover-page.png" />
@@ -488,10 +512,124 @@ export default function Home() {
                 </Typography>
               </div>
             </div>
+          </div> */}
+          <div className="row">
+            <div className="col-12 col-xl-3">
+              <div className={`${styles.boxInfografis}`}>
+                <Typography
+                  sx={{
+                    color: "#040924",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                  }}
+                >
+                  Skema
+                </Typography>
+                <CountUp start={0} end={skema.length} delay={0}>
+                  {({ countUpRef }) => (
+                    <Typography
+                      sx={{
+                        color: "#336666",
+                        fontSize: "70px",
+                        fontWeight: 700,
+                        textAlign: "center",
+                      }}
+                    >
+                      <span ref={countUpRef} />
+                    </Typography>
+                  )}
+                </CountUp>
+              </div>
+            </div>
+            <div className="col-12 col-xl-3">
+              <div className={`${styles.boxInfografis}`}>
+                <Typography
+                  sx={{
+                    color: "#040924",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                  }}
+                >
+                  Asesor
+                </Typography>
+                <CountUp start={0} end={23} delay={0}>
+                  {({ countUpRef }) => (
+                    <Typography
+                      sx={{
+                        color: "#336666",
+                        fontSize: "70px",
+                        fontWeight: 700,
+                        textAlign: "center",
+                      }}
+                    >
+                      <span ref={countUpRef} />
+                    </Typography>
+                  )}
+                </CountUp>
+              </div>
+            </div>
+            <div className="col-12 col-xl-3">
+              <div className={`${styles.boxInfografis}`}>
+                <Typography
+                  sx={{
+                    color: "#040924",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                  }}
+                >
+                  TUK
+                </Typography>
+                <CountUp start={0} end={2} delay={0}>
+                  {({ countUpRef }) => (
+                    <Typography
+                      sx={{
+                        color: "#336666",
+                        fontSize: "70px",
+                        fontWeight: 700,
+                        textAlign: "center",
+                      }}
+                    >
+                      <span ref={countUpRef} />
+                    </Typography>
+                  )}
+                </CountUp>
+              </div>
+            </div>
+            <div className="col-12 col-xl-3">
+              <div className={`${styles.boxInfografis}`}>
+                <Typography
+                  sx={{
+                    color: "#040924",
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    textAlign: "center",
+                  }}
+                >
+                  Sertifikat Terbit
+                </Typography>
+                <CountUp start={0} end={32} delay={0}>
+                  {({ countUpRef }) => (
+                    <Typography
+                      sx={{
+                        color: "#336666",
+                        fontSize: "70px",
+                        fontWeight: 700,
+                        textAlign: "center",
+                      }}
+                    >
+                      <span ref={countUpRef} />
+                    </Typography>
+                  )}
+                </CountUp>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

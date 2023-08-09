@@ -14,3 +14,20 @@
 .footer-box li {
   padding: 3px;
 }
+
+.imgFooter {
+  width: 20%;
+  margin: auto;
+  display: block;
+}
+
+.infoFooter {
+  /* margin-top: 10px; */
+  /* width: 90%; */
+  margin: auto;
+}
+
+.imgicon {
+  width: 70px;
+  padding: 0px 10px 10px 10px;
+}
